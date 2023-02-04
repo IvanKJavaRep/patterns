@@ -1,5 +1,9 @@
 package org.example;
 
+import org.example.adapter.Adapter;
+import org.example.adapter.ElectronicWatch;
+import org.example.adapter.MechanicalWatch;
+import org.example.adapter.WatchUser;
 import org.example.factoryMethod.AppleFactory;
 import org.example.factoryMethod.SmartPhoneFabric;
 import org.example.factoryMethod.SumsungFactory;
@@ -38,6 +42,13 @@ public class Main {
             fabric = new AppleFactory();
         }
         fabric.createSmartPhone().pack();
+        //adapter test
+        ElectronicWatch electronicWatch = new ElectronicWatch(1, 5);
+        WatchUser watchUser = new WatchUser();
+        watchUser.getTime(electronicWatch);
+        MechanicalWatch mechanicalWatch = new MechanicalWatch(60, 120);
+        Adapter adapter = new Adapter(mechanicalWatch);
+        watchUser.getTime(adapter);
 
     }
 }
